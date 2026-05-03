@@ -64,10 +64,7 @@ app.use(cors(corsOptions));
 
 // middleware
 app.use(express.json());
-app.use(cors({
-    origin: ['http://localhost:5173', 'https://mernshopbookstore.vercel.app/', 'https://mernshopbookstore.vercel.app/npm'],
-    credentials: true,
-}))
+app.use(cors())
 
 
 app.get("/", (req, res) => {
