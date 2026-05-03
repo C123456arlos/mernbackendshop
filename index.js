@@ -54,17 +54,22 @@ require('dotenv').config()
 
 
 const corsOptions = {
-    origin: 'https://mernshopbookstore-oc68e28nx-carlos-projects-b4082f29.vercel.app',
+    // Replace the wildcard '*' with your actual frontend URL
+    origin: 'https://mernshopbookstore-nj9jmbb5c-carlos-projects-b4082f29.vercel.app',
+    credentials: true, // Required to allow cookies/headers
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true, // Allow cookies if needed
-};
+    allowedHeaders: ['Content-Type', 'Authorization']
+}
 
 app.use(cors(corsOptions));
 
 
 // middleware
 app.use(express.json());
-app.use(cors())
+app.use(cors({
+    origin: ['http://localhost:5173', 'https://mernshopbookstore.vercel.app/', 'https://mernshopbookstore.vercel.app/npm'],
+    credentials: true,
+}))
 
 
 app.get("/", (req, res) => {
